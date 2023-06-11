@@ -12,6 +12,7 @@ public class PlayerContoller : MonoBehaviour
     public float groundCheckRadius;
     public float attackRate = 2f;
     public float damage;
+    public float attackDistance;
     float nextAttack = 0;
 
     private bool isGrounded;
@@ -19,9 +20,11 @@ public class PlayerContoller : MonoBehaviour
 
     public GameObject groundCheck;
     public LayerMask groundLayer;
-    public Transform attackPoint;
-    public float attackDistance;
+    public GameObject ninjaStar;
     public LayerMask enemyLayers;
+
+    public Transform attackPoint;
+    public Transform firePoint;
 
     Rigidbody2D rb;
     Animator anim;
@@ -44,6 +47,8 @@ public class PlayerContoller : MonoBehaviour
         {
             AttackInput();
         }
+
+        Shoot();
 
     }
 
@@ -111,7 +116,7 @@ public class PlayerContoller : MonoBehaviour
     }
     public void Attack()
     {
-        
+
         float num = UnityEngine.Random.Range(0, 2);
         if (num == 1)
         {
@@ -126,6 +131,19 @@ public class PlayerContoller : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyStats>().TakeDamage(damage);
+        }
+    }
+
+    public void Shoot()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (StarBank.instance.starBank > 0)
+            {
+                Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
+                StarBank.instance.starBank--;
+            }
+
         }
     }
 
