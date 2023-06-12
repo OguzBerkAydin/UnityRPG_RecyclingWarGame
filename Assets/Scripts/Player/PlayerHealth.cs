@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+
+    public static PlayerHealth instance;
+
     public float maxHealth;
     public float currentHealth;
     public float immunityTime;
@@ -14,7 +17,13 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBar;
 
     Animator anim;
-
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -29,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        healthBar.fillAmount = currentHealth / 100;
+        healthBar.fillAmount = currentHealth / maxHealth;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

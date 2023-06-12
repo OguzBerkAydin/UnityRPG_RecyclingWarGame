@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -28,7 +29,8 @@ public class PlayerContoller : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
-    // Start is called before the first frame update
+
+    public AudioSource swordAs;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -121,6 +123,7 @@ public class PlayerContoller : MonoBehaviour
         if (num == 1)
         {
             anim.SetTrigger("attack1");
+            AudioManager.instance.PlayAudio(swordAs);
         }
         else if (num == 0)
         {

@@ -1,21 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyStats : MonoBehaviour
 {
     public float maxHealth;
-    private float currentHealth;
     public float timer;
     public float pushForceX, pushForceY;
     public float damage;
+    public float givenExp;
+
+    private float currentHealth;
 
     public GameObject deathEffect;
     public Transform Player;
 
     HitEffect hitEffect;
     Rigidbody2D rigidbody2D;
-    // Start is called before the first frame update
+
+    public AudioSource hitAS, deadAS;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -31,6 +36,8 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        AudioManager.instance.PlayAudio(hitAS);
 
 
         if (Player.position.x < transform.position.x)
@@ -50,6 +57,9 @@ public class EnemyStats : MonoBehaviour
             currentHealth = 0;
             Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
+            Experience.instance.ExpMod(givenExp);
+            AudioManager.instance.PlayAudio(deadAS);
+
         }
     }
     IEnumerator BackToNormal()
