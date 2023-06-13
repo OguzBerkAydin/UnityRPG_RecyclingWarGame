@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Animator anim;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,5 +32,14 @@ public class MainMenu : MonoBehaviour
     public void BackToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void ShowOptions()
+    {
+        anim.SetBool("Show", true);
+    }
+    public void HideOptions()
+    {
+        anim.SetBool("Show", false);
+
     }
 }

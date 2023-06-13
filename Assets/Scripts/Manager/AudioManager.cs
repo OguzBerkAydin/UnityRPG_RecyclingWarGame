@@ -24,22 +24,21 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
 
-        masterSldr.value = masterVol;
-        effectSldr.value = effectVol;
-
         masterSldr.minValue = -80;
         masterSldr.maxValue = 20;
 
         effectSldr.minValue = -80;
         effectSldr.maxValue = 20;
 
+        masterSldr.value = PlayerPrefs.GetFloat("MusicVolume", 0f);
+        effectSldr.value = PlayerPrefs.GetFloat("FXVolume", 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MasterVolume();
-        EffectVolume();
+        //MasterVolume();
+        //EffectVolume();
     }
     public void PlayAudio(AudioSource audio)
     {
@@ -47,11 +46,13 @@ public class AudioManager : MonoBehaviour
     }
     public void MasterVolume()
     {
-        musicMixer.SetFloat("masterVolume", masterSldr.value);
+        DataManager.instance.SetMusicData(masterSldr.value);
+        musicMixer.SetFloat("masterVolume", PlayerPrefs.GetFloat("MusicVolume"));
     }
     public void EffectVolume()
     {
-        effectMixer.SetFloat("effectVolume", effectSldr.value);
+        DataManager.instance.FXData(effectSldr.value);
+        effectMixer.SetFloat("effectVolume", PlayerPrefs.GetFloat("FXVolume"));
 
     }
 }
