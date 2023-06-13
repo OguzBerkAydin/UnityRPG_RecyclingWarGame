@@ -48,4 +48,12 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("StarAmount", value);
     }
+    public void MaxHealth(float value)
+    {
+        PlayerPrefs.SetFloat("MaxHealth", value);
+    }
+    public void CurrentHealth(float value)
+    {
+        PlayerPrefs.SetFloat("CurrentHealth", value);
+    }
 }

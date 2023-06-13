@@ -61,6 +61,13 @@ public class Experience : MonoBehaviour
             lvlText.text = currLvl.ToString();
             PlayerHealth.instance.maxHealth += 5;
             PlayerHealth.instance.currentHealth += 5;
+            DataManager.instance.CurrentHealth(PlayerHealth.instance.currentHealth);
+            PlayerHealth.instance.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
+
+            DataManager.instance.MaxHealth(PlayerHealth.instance.maxHealth);
+            PlayerHealth.instance.maxHealth = PlayerPrefs.GetFloat("MaxHealth");
+
+
             AudioManager.instance.PlayAudio(levelUpAS);
 
             //currLvl = PlayerPrefs.GetInt("CurrentLevel", currLvl);
@@ -73,6 +80,10 @@ public class Experience : MonoBehaviour
         currentExperience = PlayerPrefs.GetFloat("Experience");
         expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL");
         currLvl = PlayerPrefs.GetInt("CurrentLevel");
+
+    }
+    public void DataSave()
+    {
 
     }
 }
