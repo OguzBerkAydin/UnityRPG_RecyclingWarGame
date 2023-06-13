@@ -44,4 +44,8 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("ExperienceTNL", value);
     }
+    public void CurrentStars(int value)
+    {
+        PlayerPrefs.SetInt("StarAmount", value);
+    }
 }

@@ -18,6 +18,7 @@ public class StarBank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        starBank = PlayerPrefs.GetInt("StarAmount",0);
         StarAmountText();
 
     }
@@ -31,6 +32,8 @@ public class StarBank : MonoBehaviour
     {
         starBank += starCollected;
         StarAmountText();
+        DataManager.instance.CurrentStars(starBank);
+        starBank = PlayerPrefs.GetInt("StarAmount");
         
     }
     void StarAmountText()
