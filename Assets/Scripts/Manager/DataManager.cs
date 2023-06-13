@@ -31,4 +31,17 @@ public class DataManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat("FXVolume", value);
     }
+
+    public void ExperienceData(float value)
+    {
+        PlayerPrefs.SetFloat("Experience", value);
+    }
+    public void LevelData(int value)
+    {
+        PlayerPrefs.SetInt("CurrentLevel", value);
+    }
+    public void ExperienceToNextLevel(float value)
+    {
+        PlayerPrefs.SetFloat("ExperienceTNL", value);
+    }
 }

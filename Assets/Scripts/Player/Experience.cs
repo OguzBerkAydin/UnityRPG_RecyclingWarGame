@@ -30,17 +30,27 @@ public class Experience : MonoBehaviour
         expImg.fillAmount = currentExperience / expToNextLevel;
         currLvl = 1;
         lvlText.text = currLvl.ToString();
+
+        currentExperience = PlayerPrefs.GetFloat("Experience", 0);
+        expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL", expToNextLevel);
+        currLvl = PlayerPrefs.GetInt("CurrentLevel", 1);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         expImg.fillAmount = currentExperience / expToNextLevel;
+        lvlText.text = currLvl.ToString();
 
     }
     public void ExpMod(float exp)
     {
+        currentExperience = PlayerPrefs.GetFloat("Experience", 0);
         currentExperience += exp;
+
+        expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL", expToNextLevel);
+
         expImg.fillAmount = currentExperience / expToNextLevel;
 
         if (currentExperience >= expToNextLevel)
@@ -52,7 +62,17 @@ public class Experience : MonoBehaviour
             PlayerHealth.instance.maxHealth += 5;
             PlayerHealth.instance.currentHealth += 5;
             AudioManager.instance.PlayAudio(levelUpAS);
+
+            //currLvl = PlayerPrefs.GetInt("CurrentLevel", currLvl);
+
         }
+        DataManager.instance.ExperienceData(currentExperience);
+        DataManager.instance.ExperienceToNextLevel(expToNextLevel);
+        DataManager.instance.LevelData(currLvl);
+
+        currentExperience = PlayerPrefs.GetFloat("Experience");
+        expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL");
+        currLvl = PlayerPrefs.GetInt("CurrentLevel");
 
     }
 }
