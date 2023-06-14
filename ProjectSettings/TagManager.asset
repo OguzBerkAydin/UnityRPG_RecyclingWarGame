@@ -49,8 +49,11 @@ TagManager:
   - name: Decorative
     uniqueID: 649849725
     locked: 0
-  - name: Player
+  - name: ParticleEffects
     uniqueID: 1936837645
+    locked: 0
+  - name: NewPlayer
+    uniqueID: 2310920675
     locked: 0
   - name: Grass
     uniqueID: 2849037899

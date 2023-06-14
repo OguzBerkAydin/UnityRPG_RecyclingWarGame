@@ -47,7 +47,6 @@ public class PlayerHealth : MonoBehaviour
         if (collision.CompareTag("Enemy") && !isImmune)
         {
             currentHealth -= collision.GetComponent<EnemyStats>().damage;
-            PlayerPrefs.SetFloat("CurrentHealth", currentHealth);
             StartCoroutine(Immunity());
             anim.SetTrigger("Hit");
             if (currentHealth <= 0)

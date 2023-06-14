@@ -32,8 +32,7 @@ public class StarBank : MonoBehaviour
     {
         starBank += starCollected;
         StarAmountText();
-        DataManager.instance.CurrentStars(starBank);
-        starBank = PlayerPrefs.GetInt("StarAmount");
+        
         
     }
     void StarAmountText()

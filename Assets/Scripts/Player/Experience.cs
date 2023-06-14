@@ -46,7 +46,7 @@ public class Experience : MonoBehaviour
     }
     public void ExpMod(float exp)
     {
-        currentExperience = PlayerPrefs.GetFloat("Experience", 0);
+       
         currentExperience += exp;
 
         expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL", expToNextLevel);
@@ -61,11 +61,7 @@ public class Experience : MonoBehaviour
             lvlText.text = currLvl.ToString();
             PlayerHealth.instance.maxHealth += 5;
             PlayerHealth.instance.currentHealth += 5;
-            DataManager.instance.CurrentHealth(PlayerHealth.instance.currentHealth);
-            PlayerHealth.instance.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
-
-            DataManager.instance.MaxHealth(PlayerHealth.instance.maxHealth);
-            PlayerHealth.instance.maxHealth = PlayerPrefs.GetFloat("MaxHealth");
+            
 
 
             AudioManager.instance.PlayAudio(levelUpAS);
@@ -73,17 +69,26 @@ public class Experience : MonoBehaviour
             //currLvl = PlayerPrefs.GetInt("CurrentLevel", currLvl);
 
         }
+        
+
+    }
+    public void DataSave()
+    {
         DataManager.instance.ExperienceData(currentExperience);
         DataManager.instance.ExperienceToNextLevel(expToNextLevel);
         DataManager.instance.LevelData(currLvl);
+
+        DataManager.instance.CurrentHealth(PlayerHealth.instance.currentHealth);
+        PlayerHealth.instance.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
+
+        DataManager.instance.MaxHealth(PlayerHealth.instance.maxHealth);
+        PlayerHealth.instance.maxHealth = PlayerPrefs.GetFloat("MaxHealth");
 
         currentExperience = PlayerPrefs.GetFloat("Experience");
         expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL");
         currLvl = PlayerPrefs.GetInt("CurrentLevel");
 
-    }
-    public void DataSave()
-    {
-
+        DataManager.instance.CurrentStars(StarBank.instance.starBank);
+        StarBank.instance.starBank = PlayerPrefs.GetInt("StarAmount");
     }
 }

@@ -146,7 +146,7 @@ public class PlayerContoller : MonoBehaviour
                 Instantiate(ninjaStar, firePoint.position, firePoint.rotation);
                 StarBank.instance.starBank--;
 
-                PlayerPrefs.SetInt("StarAmount", StarBank.instance.starBank);
+                //PlayerPrefs.SetInt("StarAmount", StarBank.instance.starBank);
             }
 
         }
