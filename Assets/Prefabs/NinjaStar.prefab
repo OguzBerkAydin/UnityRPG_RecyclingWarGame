@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   damage: 10
+  damageText: {fileID: 2713546598546282104, guid: 6b62def141c393345a902f3c1d3f484e, type: 3}
   player: {fileID: 4837976419905389403, guid: 462b2beb11e9b834da562e5205333861, type: 3}
   groundEffect: {fileID: 4593945966100314389, guid: 968faa6d4fdfc0e4e81664e23def47c4, type: 3}
 --- !u!114 &-4190961362870565958

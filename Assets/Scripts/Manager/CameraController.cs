@@ -24,7 +24,8 @@ public class CameraController : MonoBehaviour
     }
     void Start()
     {
-
+        player = PlayerContoller.instance.gameObject.transform;
+        activeRoom = player;
     }
 
     // Update is called once per frame

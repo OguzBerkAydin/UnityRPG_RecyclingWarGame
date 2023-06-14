@@ -7,6 +7,8 @@ using UnityEngine.Audio;
 public class PlayerContoller : MonoBehaviour
 {
 
+    public static PlayerContoller instance;
+
     private float movementDirection; // ileri mi geri mi gideceðini belirten deðiþken +x ya da-x gibi.
     public float speed;
     public float jumpPower;
@@ -29,10 +31,20 @@ public class PlayerContoller : MonoBehaviour
 
     Rigidbody2D rb;
     Animator anim;
+    WeaponStats WeaponStats;
 
     public AudioSource swordAs;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     void Start()
     {
+        WeaponStats = GetComponent<WeaponStats>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -49,12 +61,8 @@ public class PlayerContoller : MonoBehaviour
         {
             AttackInput();
         }
-
         Shoot();
-
     }
-
-
 
     private void FixedUpdate()
     {
@@ -133,7 +141,7 @@ public class PlayerContoller : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackDistance, enemyLayers);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyStats>().TakeDamage(damage);
+            enemy.GetComponent<EnemyStats>().TakeDamage(WeaponStats.DamageInput());
         }
     }
 
