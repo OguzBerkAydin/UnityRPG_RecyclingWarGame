@@ -52,6 +52,9 @@ TagManager:
   - name: ParticleEffects
     uniqueID: 1936837645
     locked: 0
+  - name: recycle object
+    uniqueID: 2258544173
+    locked: 0
   - name: NewPlayer
     uniqueID: 2310920675
     locked: 0
