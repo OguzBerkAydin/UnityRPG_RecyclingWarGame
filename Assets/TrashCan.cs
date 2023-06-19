@@ -17,9 +17,21 @@ public class TrashCan : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Glass"))
+        if (collision.tag == this.tag)
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
+            //Destroy(gameObject);
         }
+      
     }
+    
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Glass"))
+    //    {
+    //        Destroy(collision.gameObject);
+    //        Destroy(gameObject);
+    //    }
+    //}
+
 }

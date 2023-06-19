@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - Metal
+  - Plastic
+  - Glass
+  - Paper
   layers:
   - Default
   - TransparentFX
