@@ -74,21 +74,30 @@ public class Experience : MonoBehaviour
     }
     public void DataSave()
     {
-        DataManager.instance.ExperienceData(currentExperience);
-        DataManager.instance.ExperienceToNextLevel(expToNextLevel);
-        DataManager.instance.LevelData(currLvl);
+        try
+        {
+            DataManager.instance.ExperienceData(currentExperience);
+            DataManager.instance.ExperienceToNextLevel(expToNextLevel);
+            DataManager.instance.LevelData(currLvl);
 
-        DataManager.instance.CurrentHealth(PlayerHealth.instance.currentHealth);
-        PlayerHealth.instance.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
+            DataManager.instance.CurrentHealth(PlayerHealth.instance.currentHealth);
+            PlayerHealth.instance.currentHealth = PlayerPrefs.GetFloat("CurrentHealth");
 
-        DataManager.instance.MaxHealth(PlayerHealth.instance.maxHealth);
-        PlayerHealth.instance.maxHealth = PlayerPrefs.GetFloat("MaxHealth");
+            DataManager.instance.MaxHealth(PlayerHealth.instance.maxHealth);
+            PlayerHealth.instance.maxHealth = PlayerPrefs.GetFloat("MaxHealth");
 
-        currentExperience = PlayerPrefs.GetFloat("Experience");
-        expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL");
-        currLvl = PlayerPrefs.GetInt("CurrentLevel");
+            currentExperience = PlayerPrefs.GetFloat("Experience");
+            expToNextLevel = PlayerPrefs.GetFloat("ExperienceTNL");
+            currLvl = PlayerPrefs.GetInt("CurrentLevel");
 
-        DataManager.instance.CurrentStars(StarBank.instance.starBank);
-        StarBank.instance.starBank = PlayerPrefs.GetInt("StarAmount");
+            DataManager.instance.CurrentStars(StarBank.instance.starBank);
+            StarBank.instance.starBank = PlayerPrefs.GetInt("StarAmount");
+        }
+        catch
+        {
+
+            
+        }
+        
     }
 }

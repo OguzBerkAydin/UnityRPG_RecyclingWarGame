@@ -48,8 +48,6 @@ public class PlayerContoller : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
     void Update()
     {
         CheckRotation();
@@ -136,6 +134,8 @@ public class PlayerContoller : MonoBehaviour
         else if (num == 0)
         {
             anim.SetTrigger("attack2");
+            AudioManager.instance.PlayAudio(swordAs);
+
         }
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackDistance, enemyLayers);

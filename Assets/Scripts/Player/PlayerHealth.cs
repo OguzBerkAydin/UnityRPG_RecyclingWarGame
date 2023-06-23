@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     bool isImmune;
 
     public Image healthBar;
+    public GameObject deathMenu;
 
     Animator anim;
     private void Awake()
@@ -53,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 currentHealth = 0;
                 Destroy(gameObject);
+                deathMenu.SetActive(true);
             }
         }
     }

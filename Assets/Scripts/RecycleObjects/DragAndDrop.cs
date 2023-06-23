@@ -6,9 +6,9 @@ public class DragAndDrop : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset, initialPosition;
-    
 
     public static DragAndDrop instance;
+
 
     private void OnMouseDown()
     {
@@ -28,13 +28,8 @@ public class DragAndDrop : MonoBehaviour
     private void Update()
     {
         if (isDragging)
-        {
             transform.position = GetMouseWorldPosition() + offset;
-        }
-       
     }
-   
-
     private Vector3 GetMouseWorldPosition()
     {
         Vector3 mousePosition = Input.mousePosition;

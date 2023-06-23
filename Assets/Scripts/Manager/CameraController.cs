@@ -31,16 +31,24 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        var minPosY = activeRoom.GetComponent<BoxCollider2D>().bounds.min.y+minModY;
-        var maxPosY = activeRoom.GetComponent<BoxCollider2D>().bounds.max.y+maxModY;
-        var minPosx = activeRoom.GetComponent<BoxCollider2D>().bounds.min.x+minModX;
-        var maxPosX = activeRoom.GetComponent<BoxCollider2D>().bounds.max.x+maxModX;
+        try
+        {
+            var minPosY = activeRoom.GetComponent<BoxCollider2D>().bounds.min.y + minModY;
+            var maxPosY = activeRoom.GetComponent<BoxCollider2D>().bounds.max.y + maxModY;
+            var minPosx = activeRoom.GetComponent<BoxCollider2D>().bounds.min.x + minModX;
+            var maxPosX = activeRoom.GetComponent<BoxCollider2D>().bounds.max.x + maxModX;
 
-        Vector3 clampedPos = new Vector3(Mathf.Clamp(player.position.x, minPosx, maxPosX), Mathf.Clamp(player.position.y, minPosY, maxPosY), Mathf.Clamp(player.position.z, -10, -10));
+            Vector3 clampedPos = new Vector3(Mathf.Clamp(player.position.x, minPosx, maxPosX), Mathf.Clamp(player.position.y, minPosY, maxPosY), Mathf.Clamp(player.position.z, -10, -10));
 
-        Vector3 smoothPos = Vector3.Lerp(transform.position, clampedPos, dampSpeed*Time.deltaTime);
+            Vector3 smoothPos = Vector3.Lerp(transform.position, clampedPos, dampSpeed * Time.deltaTime);
 
-        transform.position = smoothPos;
+            transform.position = smoothPos;
+        }
+        catch 
+        {
+
+            
+        }
+
     }
 }
